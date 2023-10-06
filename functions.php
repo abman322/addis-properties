@@ -6,6 +6,7 @@
  *
  * @package WP_Bootstrap_Starter
  */
+require_once(get_template_directory() . '/inc/tgmpa/tgmpa-configuration.php');
 
 if ( ! function_exists( 'wp_bootstrap_starter_setup' ) ) :
 /**
@@ -73,7 +74,11 @@ function wp_bootstrap_starter_setup() {
 
 }
 endif;
+
 add_action( 'after_setup_theme', 'wp_bootstrap_starter_setup' );
+
+
+
 
 function get_breadcrumb() {
     echo '<a href="'.home_url().'" rel="nofollow">Home</a>';
@@ -94,6 +99,8 @@ function get_breadcrumb() {
         echo '</em>"';
     }
 }
+
+
 
 
 /**
