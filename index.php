@@ -38,6 +38,8 @@ if($posts):
     
 <?php 
 	endforeach;
+else:
+	get_template_part( 'template-parts/content', 'none' );
 endif;
 ?>
 </section>
