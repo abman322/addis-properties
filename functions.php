@@ -78,6 +78,189 @@ endif;
 add_action( 'after_setup_theme', 'wp_bootstrap_starter_setup' );
 
 
+// ACF Custom field setup
+add_action( 'acf/include_fields', function() {
+	if ( ! function_exists( 'acf_add_local_field_group' ) ) {
+		return;
+	}
+
+	acf_add_local_field_group( array(
+	'key' => 'group_651fb2af60a82',
+	'title' => 'property fields',
+	'fields' => array(
+		array(
+			'key' => 'field_651fb2b14a9bd',
+			'label' => 'Image',
+			'name' => 'image',
+			'aria-label' => '',
+			'type' => 'image',
+			'instructions' => '',
+			'required' => 0,
+			'conditional_logic' => 0,
+			'wrapper' => array(
+				'width' => '',
+				'class' => '',
+				'id' => '',
+			),
+			'return_format' => 'url',
+			'library' => 'all',
+			'min_width' => '',
+			'min_height' => '',
+			'min_size' => '',
+			'max_width' => '',
+			'max_height' => '',
+			'max_size' => '',
+			'mime_types' => '',
+			'preview_size' => 'medium',
+		),
+		array(
+			'key' => 'field_651fb2dd4a9be',
+			'label' => 'Price',
+			'name' => 'price',
+			'aria-label' => '',
+			'type' => 'number',
+			'instructions' => '',
+			'required' => 0,
+			'conditional_logic' => 0,
+			'wrapper' => array(
+				'width' => '',
+				'class' => '',
+				'id' => '',
+			),
+			'default_value' => 0,
+			'min' => '',
+			'max' => '',
+			'placeholder' => '',
+			'step' => '',
+			'prepend' => '',
+			'append' => '',
+		),
+		array(
+			'key' => 'field_651fb2ff4a9bf',
+			'label' => 'Facts',
+			'name' => 'facts',
+			'aria-label' => '',
+			'type' => 'wysiwyg',
+			'instructions' => '',
+			'required' => 0,
+			'conditional_logic' => 0,
+			'wrapper' => array(
+				'width' => '',
+				'class' => '',
+				'id' => '',
+			),
+			'default_value' => '',
+			'tabs' => 'all',
+			'toolbar' => 'full',
+			'media_upload' => 1,
+			'delay' => 0,
+		),
+		array(
+			'key' => 'field_651fb31c4a9c0',
+			'label' => 'Payment plan',
+			'name' => 'payment_plan',
+			'aria-label' => '',
+			'type' => 'wysiwyg',
+			'instructions' => '',
+			'required' => 0,
+			'conditional_logic' => 0,
+			'wrapper' => array(
+				'width' => '',
+				'class' => '',
+				'id' => '',
+			),
+			'default_value' => '',
+			'tabs' => 'all',
+			'toolbar' => 'full',
+			'media_upload' => 1,
+			'delay' => 0,
+		),
+		array(
+			'key' => 'field_651fb32b4a9c1',
+			'label' => '',
+			'name' => '',
+			'aria-label' => '',
+			'type' => 'text',
+			'instructions' => '',
+			'required' => 0,
+			'conditional_logic' => 0,
+			'wrapper' => array(
+				'width' => '',
+				'class' => '',
+				'id' => '',
+			),
+			'default_value' => '',
+			'maxlength' => '',
+			'placeholder' => '',
+			'prepend' => '',
+			'append' => '',
+		),
+	),
+	'location' => array(
+		array(
+			array(
+				'param' => 'post_type',
+				'operator' => '==',
+				'value' => 'property',
+			),
+		),
+	),
+	'menu_order' => 0,
+	'position' => 'normal',
+	'style' => 'default',
+	'label_placement' => 'top',
+	'instruction_placement' => 'label',
+	'hide_on_screen' => '',
+	'active' => true,
+	'description' => '',
+	'show_in_rest' => 0,
+) );
+} );
+
+add_action( 'init', function() {
+	register_post_type( 'property', array(
+	'labels' => array(
+		'name' => 'properties',
+		'singular_name' => 'property',
+		'menu_name' => 'properties',
+		'all_items' => 'All properties',
+		'edit_item' => 'Edit property',
+		'view_item' => 'View property',
+		'view_items' => 'View properties',
+		'add_new_item' => 'Add New property',
+		'new_item' => 'New property',
+		'parent_item_colon' => 'Parent property:',
+		'search_items' => 'Search properties',
+		'not_found' => 'No properties found',
+		'not_found_in_trash' => 'No properties found in Trash',
+		'archives' => 'property Archives',
+		'attributes' => 'property Attributes',
+		'insert_into_item' => 'Insert into property',
+		'uploaded_to_this_item' => 'Uploaded to this property',
+		'filter_items_list' => 'Filter properties list',
+		'filter_by_date' => 'Filter properties by date',
+		'items_list_navigation' => 'properties list navigation',
+		'items_list' => 'properties list',
+		'item_published' => 'property published.',
+		'item_published_privately' => 'property published privately.',
+		'item_reverted_to_draft' => 'property reverted to draft.',
+		'item_scheduled' => 'property scheduled.',
+		'item_updated' => 'property updated.',
+		'item_link' => 'property Link',
+		'item_link_description' => 'A link to a property.',
+	),
+	'public' => true,
+	'show_in_rest' => true,
+	'supports' => array(
+		0 => 'title',
+		1 => 'editor',
+		2 => 'thumbnail',
+	),
+	'delete_with_user' => false,
+) );
+} );
+
+
 
 
 function get_breadcrumb() {
